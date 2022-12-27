@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>쿠로브레인 - Kuro Brain</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
+
+  </head>
+
+  <body>
+    <!-- 로고 -->
+    <div id = "logo" class="top">
+      <a href="index.html">
+        <img src="main_logo.png" width=270px>
+      </a>
+    </div>
+    <!-- 메뉴 -->
+    <div id="topmemu" class="top">
+      <ul>
+        <li><a href="notice.html">공지사항</a></li>
+        <li><a href="story.html">게임정보</a></li>
+        <li><a href="guide.html">가이드</a></li>
+        <li><a href="community.html">커뮤니티</a></li>
+        <li><a href="support.html">문의</a></li>
+      </ul>
+    </div>
+    <!-- 이벤트 자동 슬라이드 -->
+    <div id = "autoslide" class="middle">
+      <img class="slide" src="sd1.png" width=1200px>
+      <img class="slide" src="sd2.png" width=1200px>
+      <img class="slide" src="sd3.png" width=1200px>
+    </div>
+    <!--로그인-->
+    <div id = "login" class="middle">
+      <a href="login.html">
+        <img src="login.png" width=400px>
+      </a>
+    </div>
+
+    <script>
+      //이미지 자동 슬라이드
+      var index = 0;   //이미지에 접근하는 인덱스
+      window.onload = function(){ //시작 시 실행할 것
+          slideShow(); //아래의 함수 호출
+      }
+
+      function slideShow() {
+      let i;
+      let x = document.getElementsByClassName("slide");  //slide(class)에 대한 dom 참조
+      for (i = 0; i < x.length; i++) {
+         x[i].style.display = "none";   //처음에 전부 display를 none으로 한다.
+      }
+      index++;
+      if (index > x.length) {
+          index = 1;  //인덱스가 초과되면 1로 변경
+      }
+      x[index-1].style.display = "inline";  //해당 인덱스는 inline으로
+      setTimeout(slideShow, 5000);   //함수를 4초마다 호출
+      }
+    </script>
+
+  </body>
+</html>

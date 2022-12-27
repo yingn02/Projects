@@ -1,0 +1,56 @@
+body {
+  overflow-x: hidden;
+  background-image: url("background.png");
+  background-size: 1980px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  margin: 0px;
+}
+
+.top {
+  text-align: center;
+  margin: 20px;
+}
+
+#topmemu {
+  text-align: center;
+  margin: 0 auto;
+  width: 1180px;
+}
+
+#topmemu a {
+  display: inline-block;
+  color: white;
+  text-decoration-line: none;
+  font-weight: bold;
+}
+
+#topmemu ul {
+ background-color: black;
+ list-style: none;
+ overflow: hidden;
+ padding-top: 20px;
+ padding-bottom: 20px;
+}
+
+#topmemu li {
+  display: inline;
+  font-size: 17px;
+  float: left;
+  width: 20%;
+}
+
+.middle {
+  text-align: center;
+}
+
+#autoslide {
+
+  position: relative; z-index: 1;
+  text-align: center;
+}
+
+#login {
+  position: relative; left: 430px; top: -170px; z-index: 2;
+}

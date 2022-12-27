@@ -1,0 +1,84 @@
+body {
+  overflow-x: hidden;
+  background-image: url("background.png");
+  background-size: 1980px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  margin: 0px;
+}
+
+.top {
+  text-align: center;
+  margin: 20px;
+}
+
+#topmemu {
+  text-align: center;
+  margin: 0 auto;
+  width: 1180px;
+}
+
+#topmemu a {
+  display: inline-block;
+  color: white;
+  text-decoration-line: none;
+  font-weight: bold;
+}
+
+#topmemu ul {
+ background-color: black;
+ list-style: none;
+ overflow: hidden;
+ padding-top: 20px;
+ padding-bottom: 20px;
+}
+
+#topmemu li {
+  display: inline;
+  font-size: 17px;
+  float: left;
+  width: 20%;
+}
+
+.info {
+    padding-top: 100px;
+}
+
+.background_box {
+  text-align: center;
+  position: relative; z-index: 1;
+  margin-bottom: -200px;
+}
+
+.prof_picture {
+  position: relative; top: -300px; z-index: 2;
+}
+
+.prof_picture img {
+  text-align: center;
+  padding-right: 10px;
+  padding-bottom: 40px;
+}
+
+.explain_prof {
+  text-align: center;
+  position: relative; top: -158px; left: -77px; z-index: 2;
+  font-weight: bold;
+
+}
+
+.explain_prof  h2 {
+  text-shadow: 2px 2px 2px black;
+}
+
+.explain_prof div{
+  padding-top: 3px;
+  padding-left: 100px;
+}
+
+.explain_prof p{
+  text-align: left;
+  font-size: 17px;
+  padding-bottom: 2px;
+}
