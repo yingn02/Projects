@@ -1,71 +1,70 @@
 import React, { useState } from 'react';
-import { TreeSelect } from 'antd';
+import { Select } from 'antd';
 
-const AddTypeFilter = function() {
-  const { SHOW_PARENT } = TreeSelect;
-
-  const treeData = [
-    {
-      title: 'Node1',
-      value: '0-0',
-      key: '0-0',
-      children: [
-        {
-          title: 'Child Node1',
-          value: '0-0-0',
-          key: '0-0-0',
-        },
-      ],
-    },
-    {
-      title: 'Node2',
-      value: '0-1',
-      key: '0-1',
-      children: [
-        {
-          title: 'Child Node3',
-          value: '0-1-0',
-          key: '0-1-0',
-        },
-        {
-          title: 'Child Node4',
-          value: '0-1-1',
-          key: '0-1-1',
-        },
-        {
-          title: 'Child Node5',
-          value: '0-1-2',
-          key: '0-1-2',
-        },
-      ],
-    },
-  ];
-
-  const [value, setValue] = useState(['0-0-0']);
-
-  const onChange = (newValue) => {
-    console.log('onChange ', value);
-    setValue(newValue);
+const AddTypeFilter = function ({ onSelect }) {
+  const onChange = (value) => {
+    console.log(`selected ${value}`);
+    onSelect(value); // 선택된 값을 부모 컴포넌트로 전달
+  };
+  const onSearch = (value) => {
+    console.log('search:', value);
   };
 
-  const tProps = {
-    treeData,
-    value,
-    onChange,
-    treeCheckable: true,
-    showCheckedStrategy: SHOW_PARENT,
-    placeholder: '장소 분류 선택',
-    style: {
-      width: '300px',
-      height: '30px',
-    },
-  };
-  
-    return (
-      <>
-        <TreeSelect {...tProps} />
-      </>
-    );
+  const filterOption = (input, option) =>
+    (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
+
+  return (
+    <>
+      <Select
+        showSearch
+        placeholder="장소 분류 선택"
+        optionFilterProp="children"
+        onChange={onChange}
+        onSearch={onSearch}
+        filterOption={filterOption}
+        style={{ width: '200px' }}
+        options={[
+          {
+            value: '',
+            label: '전체',
+          },
+          {
+            value: '12',
+            label: '관광특화',
+          },
+          {
+            value: '14',
+            label: '문화시설',
+          },
+          {
+            value: '15',
+            label: '행사/공연/축제',
+          },
+          {
+            value: '25',
+            label: '여행코스',
+          },
+          {
+            value: '28',
+            label: '레포츠',
+          },
+          {
+            value: '32',
+            label: '숙박',
+          },
+          {
+            value: '38',
+            label: '쇼핑',
+          },
+          {
+            value: '39',
+            label: '음식',
+          },
+        ]}
+      />
+
+    </>
+  );
 }
 
 export default AddTypeFilter;

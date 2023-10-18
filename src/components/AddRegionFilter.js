@@ -1,80 +1,78 @@
 import React, { useState } from 'react';
-import { Radio, TreeSelect } from 'antd';
+import { Select } from 'antd';
 
-const AddRegionFilter = function() {
-    const treeData = [
-        {
-          value: 'parent 1',
-          title: 'parent 1',
-          children: [
-            {
-              value: 'parent 1-0',
-              title: 'parent 1-0',
-              children: [
-                {
-                  value: 'leaf1',
-                  title: 'leaf1',
-                },
-                {
-                  value: 'leaf2',
-                  title: 'leaf2',
-                },
-              ],
-            },
-            {
-              value: 'parent 1-1',
-              title: 'parent 1-1',
-              children: [
-                {
-                  value: 'leaf3',
-                  title: (
-                    <b
-                      style={{
-                        color: '#08c',
-                      }}
-                    >
-                      leaf3
-                    </b>
-                  ),
-                },
-              ],
-            },
-          ],
-        },
-      ];
+const AddRegionFilter = function ({ onSelect }) {
+  const onChange = (value) => {
+    console.log(`selected ${value}`);
+    onSelect(value); // 선택된 값을 부모 컴포넌트로 전달
+  };
+  const onSearch = (value) => {
+    console.log('search:', value);
+  };
 
-    const [placement, SetPlacement] = useState('topLeft');
-    const placementChange = (e) => {
-        SetPlacement(e.target.value);
-    };
+  const filterOption = (input, option) =>
+    (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
 
-    return (
-        <>
-            {/* <Radio.Group value={placement} onChange={placementChange}>
-                <Radio.Button value="topLeft">topLeft</Radio.Button>
-                <Radio.Button value="topRight">topRight</Radio.Button>
-                <Radio.Button value="bottomLeft">bottomLeft</Radio.Button>
-                <Radio.Button value="bottomRight">bottomRight</Radio.Button>
-            </Radio.Group>
-            <br />
-            <br /> */}
+  return (
+    <>
+      <Select
+        showSearch
+        placeholder="지역 선택"
+        optionFilterProp="children"
+        onChange={onChange}
+        onSearch={onSearch}
+        filterOption={filterOption}
+        style={{ width: '200px' }}
+        options={[
+          {
+            value: '',
+            label: '전체',
+          },
+          {
+            value: '1',
+            label: '서울',
+          },
+          {
+            value: '2',
+            label: '인천',
+          },
+          {
+            value: '3',
+            label: '대전',
+          },
+          {
+            value: '4',
+            label: '대구',
+          },
+          {
+            value: '5',
+            label: '광주',
+          },
+          {
+            value: '6',
+            label: '부산',
+          },
+          {
+            value: '7',
+            label: '울산',
+          },
+          {
+            value: '8',
+            label: '세종특별자치시',
+          },
+          {
+            value: '9',
+            label: '경기도',
+          },
+          {
+            value: '10',
+            label: '강원도',
+          },
+        ]}
+      />
 
-            <TreeSelect
-                showSearch
-                dropdownStyle={{
-                maxHeight: 400,
-                overflow: 'auto',
-                minWidth: 300,
-                }}
-                placeholder="지역 선택"
-                dropdownMatchSelectWidth={false}
-                placement={placement}
-                allowClear
-                treeDefaultExpandAll
-                treeData={treeData}
-            />
     </>
-    );
+  );
 }
 
 export default AddRegionFilter;
