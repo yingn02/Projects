@@ -56,7 +56,7 @@ const MainSearch = function () {
             if (!response.ok) {
                 throw new Error("응답이 없음");
             }
-            return response.json(); // JSON으로 파싱된 데이터를 반환하는 Promise
+            return response.json(); // JSON으로 파싱된 데이터를 반환
         })
         .then((data) => {
             //여기에 JSON 데이터를 사용하거나 처리
@@ -87,7 +87,7 @@ const MainSearch = function () {
             <div style={{ display: 'flex'}}>
                 <AddMap/>
                 &emsp;
-                <AddWeather/>
+                <AddWeather cdata = {data}/>
             </div>
 
             <br/>
