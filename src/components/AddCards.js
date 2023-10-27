@@ -3,12 +3,12 @@ import React from 'react';
 import { Row, Col, Card } from 'antd';
 //const { Meta } = Card;
 
-const AddCards = function ({ cdata }) {
+const AddCards = function ({ bdata }) {
     let cardInfo = [];
 
-    if (cdata && cdata.response && cdata.response.body && cdata.response.body.items && cdata.response.body.items.item) {
-        //console.log(cdata.response.body.items.item[0].addr1);
-        cardInfo = cdata.response.body.items.item;
+    if (bdata && bdata.response && bdata.response.body && bdata.response.body.items && bdata.response.body.items.item) {
+        //console.log(bdata.response.body.items.item[0].addr1);
+        cardInfo = bdata.response.body.items.item;
     } 
     else {
         console.log("데이터 로딩중");

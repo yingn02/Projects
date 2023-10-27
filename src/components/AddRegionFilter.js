@@ -6,6 +6,7 @@ const AddRegionFilter = function ({ onSelect }) {
     console.log(`selected ${value}`);
     onSelect(value); // 선택된 값을 부모 컴포넌트로 전달
   };
+  
   const onSearch = (value) => {
     console.log('search:', value);
   };

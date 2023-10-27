@@ -3,8 +3,11 @@ import AddSearchBox from './AddSearchBox';
 import AddTypeFilter from './AddTypeFilter';
 import AddRegionFilter from './AddRegionFilter';
 import AddMap from "./AddMap";
-import AddCards from './AddCards';
 import AddWeather from './AddWeather';
+import { Map } from 'react-kakao-maps-sdk';
+import AddNews from './AddNews';
+import AddBottomBar from './AddBottomBar';
+
 
 const MainSearch = function () {
     const [searchQuery, setSearchQuery] = useState(''); //검색
@@ -74,6 +77,7 @@ const MainSearch = function () {
     //<p>선택된 지역: {selectedRegion}</p>
     return (
         <>
+
             <div>
                 <AddSearchBox onSearch={handleSearch}/>
             </div>
@@ -85,14 +89,22 @@ const MainSearch = function () {
             </div>
             <br/>
             <div style={{ display: 'flex'}}>
-                <AddMap/>
+                <div>
+                    <AddMap/>
+                </div>
                 &emsp;
-                <AddWeather cdata = {data}/>
+                <div>
+                    <div>
+                        <AddWeather cdata = {data}/>
+                    </div>
+                    <br/>
+                    <div>
+                        <AddNews cdata = {data}/>
+                    </div>
+                </div>
             </div>
-
             <br/>
-            <h3>관광지 정보</h3>
-            <AddCards cdata = {data}/>
+            <AddBottomBar cdata = {data}/>
         </>
     );
 }

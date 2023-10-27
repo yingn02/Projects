@@ -5,7 +5,8 @@ import AddRegionWeather from './AddRegionWeather';
 
 const AddWeather = function ({ cdata }) {
   const [data, setData] = useState();
-  let x, y;
+  var i, n=0;
+  let x, y, oldr, r="";
   let today = new Date();
   let year = today.getFullYear(); // 년도
   let month = today.getMonth() + 1;  // 월
@@ -15,7 +16,16 @@ const AddWeather = function ({ cdata }) {
   if (cdata && cdata.response && cdata.response.body && cdata.response.body.items && cdata.response.body.items.item) {
     x = cdata.response.body.items.item[0].mapx;
     y = cdata.response.body.items.item[0].mapy;
-    //console.log(x, y);
+    oldr = cdata.response.body.items.item[0].addr1;
+    for(i=0; i<oldr.length; i++) { //ㅇㅇ시 ㅇㅇ동 ... -> ㅇㅇ시 ㅇㅇ동
+      if(oldr[i] === " ") {
+        r += (oldr[i]);
+        n++;
+        if(n >= 2) break;
+      }
+      else r += (oldr[i]);
+    }
+    //console.log(r);
   }
   else {
     console.log("데이터 로딩중");
@@ -79,7 +89,6 @@ const AddWeather = function ({ cdata }) {
       })
       .then((data) => {
         //여기에 JSON 데이터를 사용하거나 처리
-        //console.log(data.response.body.items.item[0].fcstValue); //TMP
         setData(data);
       })
       .catch((error) => {
@@ -91,7 +100,7 @@ const AddWeather = function ({ cdata }) {
 
   return (
     <>
-      <AddRegionWeather wdata={data} />
+      <AddRegionWeather region={r} wdata={data} />
     </>
   );
 };
